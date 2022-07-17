@@ -1,8 +1,15 @@
 import React, { createContext } from "react";
+import { useState } from "react";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  // code here
-  return <AuthContext.Provider>{children}</AuthContext.Provider>;
+  const [token,setToken] = useState("")
+
+  const value = {
+    token,
+    setToken
+  }
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
